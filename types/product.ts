@@ -6,6 +6,9 @@ export type ProductType = {
   isFeatured: boolean;
   origin: string;
   price: number;
+  brand: {
+    brand_name: string
+  }
   images: Array<{
     id: number;
     url: string;
