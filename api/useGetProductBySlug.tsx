@@ -1,13 +1,10 @@
-import { ProductType } from "@/types/product";
 import { useEffect, useState } from "react";
 
-export function useGetFeaturedProducts() {
-    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/products?filters[isFeatured][$eq]=true&populate=*`;
-    const [result, setResult] = useState<ProductType[]>([]);
+export function useGetProductBySlug(slug: string | string[]) {
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/products?filters[slug][$eq]=${slug}&populate=*`;
+    const [result, setResult] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-
-    console.log(result);
 
     useEffect(() => {
         (async () => {
@@ -22,8 +19,10 @@ export function useGetFeaturedProducts() {
             } finally {
                 setIsLoading(false);
             }
-        })();
-    }, [url]);
+        })()
+
+    }, [url])
 
     return { result, isLoading, error };
+
 }

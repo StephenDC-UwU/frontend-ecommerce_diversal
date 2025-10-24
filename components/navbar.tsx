@@ -1,14 +1,19 @@
 "use client";
-import { Heart, ShoppingCart, User } from "lucide-react";
+import { BaggageClaim, Heart, ShoppingCart, User } from "lucide-react";
 import { useRouter } from "next/navigation";
 import MenuList from "./menu-list";
 import ItemsMenuMobile from "./items-menu-mobile";
 import ToogleTheme from "./toggle-theme";
+import { useCart } from "@/hooks/use-cart";
+import { useLovedProducts } from "@/hooks/use-loved-products";
 
 
 const navbar = () => {
 
     const router = useRouter();
+    const cart = useCart();
+
+    const { lovedItems } = useLovedProducts();
 
     return (
         <nav className="flex items-center justify-between p-4 mx-auto cursor-pointer sm:_max-w-4xl md:max-w-6xl">
@@ -28,15 +33,23 @@ const navbar = () => {
 
 
             <div className="flex items-center justify-between gap-7">
-                <ShoppingCart
-                    strokeWidth={1}
-                    className="w-6 h-6 cursor-pointer"
-                    onClick={() => router.push("/cart")}
-                />
+                {cart.items.length === 0 ?
+                    <ShoppingCart
+                        strokeWidth={1}
+                        className="w-6 h-6 cursor-pointer"
+                        onClick={() => router.push("/cart")}
+                    />
+                    : (
+                        <div className="flex gap-1" onClick={() => router.push("/cart")}>
+                            <BaggageClaim strokeWidth={1} className="cursor-pointer" onClick={() => router.push("/cart")} />
+                            <span>{cart.items.length}</span>
+                        </div>
+                    )}
+
                 <Heart
                     strokeWidth={1}
-                    className="w-6 h-6 cursor-pointer"
-                    onClick={() => router.push("/love-products")}
+                    className={`cursor-pointer ${lovedItems.length > 0 && 'fill-primary'}`}
+                    onClick={() => router.push("/loved-products")}
                 />
                 <User
                     strokeWidth={1}

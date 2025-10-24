@@ -1,10 +1,11 @@
+import { ResultFilterTypes } from "@/types/filters";
 import { useEffect, useState } from "react";
 
 export function useGetProductField() {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/content-type-builder/content-types/api::product.product`;
-    const [result, setResult] = useState(null);
+    const [result, setResult] = useState<ResultFilterTypes | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         (async () => {
@@ -23,5 +24,5 @@ export function useGetProductField() {
 
     }, [url])
 
-    return { isLoading, result, error }
+    return { result, isLoading, error };
 }

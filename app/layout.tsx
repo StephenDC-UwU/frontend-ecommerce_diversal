@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/sonner";
+import NextTopLoader from 'nextjs-toploader';
 
 // Title: Playfair Display
 const playfairDisplay = Playfair_Display({
@@ -39,8 +41,20 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <NextTopLoader
+            color="#2299DD"
+            initialPosition={0.98}
+            crawlSpeed={200}
+            height={3}
+            crawl={true}
+            showSpinner={true}
+            easing="ease"
+            speed={200}
+            shadow="0 0 10px #2299DD, 0 0 5px #2299DD"
+          />
           <Navbar />
           {children}
+          <Toaster />
           <Footer />
         </ThemeProvider>
       </body>
