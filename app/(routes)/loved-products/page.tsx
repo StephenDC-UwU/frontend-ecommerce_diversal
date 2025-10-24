@@ -2,7 +2,7 @@
 import { useLovedProducts } from "@/hooks/use-loved-products"
 import LovedItemProduct from "./components/loved-item";
 
-export default function page() {
+export default function Page() {
 
     const { lovedItems } = useLovedProducts();
 

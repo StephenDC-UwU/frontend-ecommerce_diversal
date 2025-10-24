@@ -8,7 +8,7 @@ import { useCart } from "@/hooks/use-cart";
 import { useLovedProducts } from "@/hooks/use-loved-products";
 
 
-const navbar = () => {
+const Navbar = () => {
 
     const router = useRouter();
     const cart = useCart();
@@ -62,4 +62,4 @@ const navbar = () => {
     )
 }
 
-export default navbar;
+export default Navbar;
