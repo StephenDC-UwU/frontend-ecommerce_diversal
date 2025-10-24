@@ -1,7 +1,7 @@
 
 
 export type ResponseType<T>= {
-    result: T[];
-    isLoading: boolean;
+    result: T[] | null | undefined;
+    isLoading: boolean | null;
     error: string | null;
 }

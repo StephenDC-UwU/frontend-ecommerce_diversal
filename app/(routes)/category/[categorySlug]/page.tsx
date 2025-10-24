@@ -16,15 +16,14 @@ export default function Page() {
     const { result, isLoading }: ResponseType<ProductType> = useGetProductsByCategory(categorySlug);
     const [filterOrigin, setFilterOrigin] = useState('');
 
+    console.log(result);
+
 
     const filteredProducts = result !== null && !isLoading && (
         filterOrigin === ''
             ? result
             : result.filter((product: ProductType) => product.origin === filterOrigin)
     );
-
-
-
 
     return (
         <div className='max-w-6xl py-4 mx-auto sm:py-16 sm:px-24'>
@@ -41,12 +40,12 @@ export default function Page() {
                     {isLoading && (
                         <SkeletonSchema grid={3} />
                     )}
-                    {filteredProducts !== null && !isLoading && (
+                    {Array.isArray(filteredProducts) && filteredProducts !== null && !isLoading && (
                         filteredProducts.map((product: ProductType) => (
                             <ProductCard key={product.id} product={product} />
                         ))
                     )}
-                    {filteredProducts !== null && !isLoading && filteredProducts.length === 0 && (
+                    {Array.isArray(filteredProducts) && filteredProducts !== null && !isLoading && filteredProducts.length === 0 && (
                         <p>Oh this moment we dont have stock sorry... </p>
                     )}
                 </div>

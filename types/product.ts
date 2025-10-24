@@ -9,11 +9,16 @@ export type ProductType = {
   brand: {
     brand_name: string
   }
-  images: Array<{
+  images: {
     id: number;
     url: string;
-  }>;
+  }[];
   sub_sub_category: {
+    sub_category:{
+      categories: Array<{
+        category_name: string
+      }>;
+    },
     slug: string;
     sub_sub_category_name: string;
   };
