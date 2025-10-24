@@ -131,7 +131,7 @@ const MenuList = () => {
                                 The latest and greatest products just for you.
                             </ListItem>
                             <ListItem href="/" title="Offerts and Discounts">
-                                Exclusive deals you won't want to miss.
+                                {`Exclusive deals you won't want to miss.`}
                             </ListItem>
                             <ListItem href="/" title="For you">
                                 Handpicked selections tailored to your tastes.
