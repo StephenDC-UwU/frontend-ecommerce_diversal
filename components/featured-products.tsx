@@ -38,7 +38,7 @@ const FeaturedProducts = () => {
                                                 layout="fill"
                                                 objectFit="cover"
                                                 priority={false}
-                                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${images[1].url}`} alt="Image featured"
+                                                src={`${images[1].url}`} alt="Image featured"
                                             />
                                             <div className="absolute w-full px-6 transition duration-200 opacity-0 group-hover:opacity-100">
                                                 <div className="flex justify-center gap-x-6">

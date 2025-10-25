@@ -28,7 +28,7 @@ const LovedItemProduct = (props: LovedItemProductProps) => {
     return (
         <li className="flex py-6 border-b">
             <div onClick={() => router.push(`/product/${product.slug}`)}>
-                <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}`} alt="product"
+                <img src={`$${product.images[0].url}`} alt="product"
                     className="w-24 h-24 overflow-hidden rounded-sm sm:w-auto sm:h-32"
                 />
             </div>

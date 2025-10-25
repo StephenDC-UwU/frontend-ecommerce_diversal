@@ -17,7 +17,7 @@ const ChooseCategory = () => {
                             className="relative max-w-xs mx-auto overflow-hidden bg-no-repeat bg-cover rounded-lg w-[400px] h-[500px]"
                         >
                             <Image
-                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${category.image.url}`}
+                                src={`${category.image.url}`}
                                 layout="fill"
                                 objectFit="cover"
                                 priority={false}
