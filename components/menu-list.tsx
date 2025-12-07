@@ -183,7 +183,7 @@ const MenuList = () => {
                 {/* About us */}
                 <NavigationMenuItem>
                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                        <Link href="/aboutUs">About</Link>
+                        <Link href="/about">About</Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
 
@@ -194,9 +194,6 @@ const MenuList = () => {
                         <Link href="/contact">Contact</Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
-
-
-
             </NavigationMenuList>
         </NavigationMenu>
     );
