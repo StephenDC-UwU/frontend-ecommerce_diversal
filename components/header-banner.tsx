@@ -1,3 +1,4 @@
+"use client"
 const HeaderBanner = () => {
     return (
         <div className="relative h-[350px] md:h-[900px] overflow-hidden mt-5">
