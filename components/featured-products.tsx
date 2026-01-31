@@ -32,7 +32,9 @@ const FeaturedProducts = () => {
                                 key={id}
                             >
                                 <div className="p-1">
-                                    <Card className="py-4 border border-gray-200 shadow-none h-auto">
+                                    <Card className="py-4 border border-gray-200 shadow-none h-auto"
+                                        onClick={() => router.push(`product/${slug}`)}
+                                    >
                                         <CardContent className="relative flex items-center justify-center px-6 py-2 h-80 overflow-hidden">
                                             <Image
                                                 layout="fill"

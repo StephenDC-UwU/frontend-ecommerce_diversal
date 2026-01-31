@@ -13,7 +13,7 @@ const HeaderBanner = () => {
             </video>
 
             <div className="relative z-10 flex h-full items-center justify-center">
-                <h1 className="text-primary-foreground text-9xl font-bold">
+                <h1 className="text-primary-foreground text-4xl md:text-9xl font-bold">
                     Diversal
                 </h1>
             </div>

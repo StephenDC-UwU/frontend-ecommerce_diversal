@@ -55,16 +55,16 @@ export default function Page() {
                     </ul>
                 </div>
                 <div className="max-w-xl">
-                    <div className="p-6 rounded-lg bg-slate-100">
-                        <p className="mb-3 text-lg font-semibold">Order Summary</p>
+                    <div className="p-6 rounded-lg bg-slate-100 dark:bg-slate-800">
+                        <p className="mb-3 text-lg font-semibold dark:text-white">Order Summary</p>
                         <Separator />
-                        <div className="flex justify-between gap-5 my-4">
+                        <div className="flex justify-between gap-5 my-4 dark:text-white">
                             <p>Order total</p>
                             <p>{formatPrice(totalPrice)}</p>
                         </div>
                         <div className="flex items-center justify-center w-full mt-3">
                             <Button className="w-full" onClick={buyStripe} disabled={isLoading}>
-                                {isLoading ? "Cargando..." : "Comprar"}
+                                {isLoading ? "Loading..." : "Buy"}
                             </Button>
                         </div>
                     </div>

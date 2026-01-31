@@ -46,9 +46,9 @@ const Navbar = ({ user }: NavbarProps) => {
     }
 
     return (
-        <nav className="absolute z-50 top-0 left-0 right-0 flex items-center justify-between py-4 mx-auto cursor-pointer sm:max-w-4xl md:max-w-6xl ">
+        <nav className="relative md:absolute z-50 top-0 left-0 right-0 flex items-center justify-between py-4 mx-auto cursor-pointer sm:max-w-4xl md:max-w-6xl ">
             <h1
-                className="text-4xl"
+                className="text-4xl hidden md:flex"
                 onClick={() => router.push('/')}
             >
                 Shopping

@@ -12,18 +12,18 @@ const ItemsMenuMobile = () => {
             <PopoverTrigger>
                 <Menu />
             </PopoverTrigger>
-            <PopoverContent className="text-black">
-                <Link href="/" className="block">
-                    Clothes
+            <PopoverContent className="text-dark dark:text-white">
+                <Link href="/shop/male" className="block">
+                    Man
                 </Link>
-                <Link href="/category/clothes" className="block">
-                    Shoes
+                <Link href="/shop/female" className="block">
+                    Woman
                 </Link>
-                <Link href="/category/clothes" className="block">
+                <Link href="/shop" className="block">
+                    Shop
+                </Link>
+                <Link href="/shop" className="block">
                     Accesories
-                </Link>
-                <Link href="/category/clothes" className="block">
-                    Jowerly
                 </Link>
             </PopoverContent>
         </Popover>
