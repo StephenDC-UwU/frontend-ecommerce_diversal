@@ -7,11 +7,11 @@ import { cn } from "@/lib/utils";
 import { ProductType } from "@/types/product";
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface LovedItemProductProps {
     product: ProductType
 }
-
 
 const LovedItemProduct = (props: LovedItemProductProps) => {
     const { product } = props;
@@ -28,8 +28,12 @@ const LovedItemProduct = (props: LovedItemProductProps) => {
     return (
         <li className="flex py-6 border-b">
             <div onClick={() => router.push(`/product/${product.slug}`)}>
-                <img src={`$${product.images[0].url}`} alt="product"
+                <Image
+                    width={100}
+                    height={100}
                     className="w-24 h-24 overflow-hidden rounded-sm sm:w-auto sm:h-32"
+                    src={`${product.images[0].url}`} alt="product"
+
                 />
             </div>
             <div className="flex justify-between flex-1 px-6">

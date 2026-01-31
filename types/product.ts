@@ -13,13 +13,8 @@ export type ProductType = {
     id: number;
     url: string;
   }[];
-  sub_sub_category: {
-    sub_category:{
-      categories: Array<{
-        category_name: string
-      }>;
-    },
+  sub_category: {
     slug: string;
-    sub_sub_category_name: string;
+    sub_category_name: string;
   };
 };

@@ -5,7 +5,6 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
-    navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
 import Link from "next/link";
@@ -19,14 +18,14 @@ const components: {
         {
             id: 5,
             title: "Man",
-            description: "man",
-            href: "/category/man",
+            description: "The best Arrival for Men",
+            href: "/shop/male",
         },
         {
             id: 6,
             title: "Woman",
-            description: "woman",
-            href: "/category/woman",
+            description: "The beauty for Women",
+            href: "/shop/female",
         },
     ];
 
@@ -40,40 +39,40 @@ const subComponentsClothes: {
             "id": 3,
             "title": "Shirt",
             "description": "null",
-            "href": "/shirt",
+            "href": "/shop/shirt",
         },
         {
             "id": 4,
             "title": "T-Shirt",
             "description": "null",
-            "href": "/t-shirt",
+            "href": "/shop/t-shirt",
         },
         {
             "id": 6,
 
             "title": "Pants",
             "description": "null",
-            "href": "/pants",
+            "href": "/shop/pants",
         },
         {
             "id": 8,
 
             "title": "Jogger",
             "description": "null",
-            "href": "/jogger",
+            "href": "/shop/jogger",
         },
         {
             "id": 10,
 
             "title": "Sneakers",
             "description": "null",
-            "href": "/sneakers",
+            "href": "/shop/sneakers",
         },
         {
             "id": 12,
             "title": "Sandals",
             "description": "null",
-            "href": "/sandals",
+            "href": "/shop/sandals",
         },
 
     ];
@@ -89,14 +88,14 @@ const subComponentsAccesories: {
             title: "Bags",
             description:
                 "Accessories designed to carry personal items, including backpacks, tote bags, crossbody bags, and handbags. Bags come in various sizes, materials, and styles, suitable for everyday use, travel, or special occasions.",
-            href: "/bags",
+            href: "/shop/bags",
         },
         {
             id: 8,
             title: "Jewelry",
             description:
                 "Decorative accessories worn for personal adornment, including necklaces, bracelets, rings, and earrings. Jewelry comes in various materials and designs, enhancing style for everyday or special occasions.",
-            href: "/jewelry",
+            href: "/shop/jewelry",
         },
     ];
 
@@ -105,18 +104,18 @@ const subComponentsAccesories: {
 
 const MenuList = () => {
     return (
-        <NavigationMenu>
+        <NavigationMenu >
             <NavigationMenuList className="flex-wrap">
                 {/* Home */}
-                <NavigationMenuItem>
-                    <NavigationMenuTrigger>Home</NavigationMenuTrigger>
+                <NavigationMenuItem >
+                    <NavigationMenuTrigger className="bg-transparent">Home</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                             <li className="row-span-3">
                                 <NavigationMenuLink asChild>
                                     <Link
                                         className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6"
-                                        href="/"
+                                        href="/shop"
                                     >
                                         <div className="mb-2 text-lg font-medium sm:mt-4">
                                             Featured
@@ -127,13 +126,13 @@ const MenuList = () => {
                                     </Link>
                                 </NavigationMenuLink>
                             </li>
-                            <ListItem href="/" title="New Season Arrivals">
+                            <ListItem href="/shop" title="New Season Arrivals">
                                 The latest and greatest products just for you.
                             </ListItem>
-                            <ListItem href="/" title="Offerts and Discounts">
+                            <ListItem href="/shop" title="Offerts and Discounts">
                                 {`Exclusive deals you won't want to miss.`}
                             </ListItem>
-                            <ListItem href="/" title="For you">
+                            <ListItem href="/shop" title="For you">
                                 Handpicked selections tailored to your tastes.
                             </ListItem>
                         </ul>
@@ -141,27 +140,36 @@ const MenuList = () => {
                 </NavigationMenuItem>
 
                 {/* Store */}
-                <NavigationMenuItem>
-                    <NavigationMenuTrigger>Store</NavigationMenuTrigger>
+                <NavigationMenuItem >
+                    <NavigationMenuTrigger className="bg-transparent">Store</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                             {components.map((component) => (
-                                <ListItem
-                                    key={component.id}
-                                    title={component.title}
-                                    href={component.href}
-                                >
-                                    {component.description}
-
-                                    {subComponentsClothes.map((subComponentClothes) => (
-                                        <ListItem
-                                            key={subComponentClothes.id}
-                                            title={subComponentClothes.title}
-                                            href={subComponentClothes.href}
+                                <li key={component.id} className="row-span-3">
+                                    <NavigationMenuLink asChild>
+                                        <Link
+                                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                            href={component.href}
                                         >
-                                        </ListItem>
-                                    ))}
-                                </ListItem>
+                                            <div className="text-sm font-medium leading-none">{component.title}</div>
+                                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                                {component.description}
+                                            </p>
+                                        </Link>
+                                    </NavigationMenuLink>
+
+                                    {/* Sub-items rendered outside the parent Link */}
+                                    <ul className="mt-2 space-y-1 px-3">
+                                        {subComponentsClothes.map((subComponentClothes) => (
+                                            <ListItem
+                                                key={subComponentClothes.id}
+                                                title={subComponentClothes.title}
+                                                href={subComponentClothes.href}
+                                            >
+                                            </ListItem>
+                                        ))}
+                                    </ul>
+                                </li>
                             ))}
                             <ListItem href="/category/accessories" title="Accessories">
                                 {subComponentsAccesories.map((subComponentsAccesories) => (
@@ -181,8 +189,8 @@ const MenuList = () => {
 
 
                 {/* About us */}
-                <NavigationMenuItem>
-                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                <NavigationMenuItem >
+                    <NavigationMenuLink asChild className="bg-transparent">
                         <Link href="/about">About</Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -190,7 +198,7 @@ const MenuList = () => {
 
                 {/* Contact */}
                 <NavigationMenuItem>
-                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink asChild className="bg-transparent">
                         <Link href="/contact">Contact</Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -210,9 +218,9 @@ function ListItem({
             <NavigationMenuLink asChild>
                 <Link href={href}>
                     <div className="text-sm leading-none font-medium">{title}</div>
-                    <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+                    <div className="text-muted-foreground line-clamp-2 text-sm leading-snug">
                         {children}
-                    </p>
+                    </div>
                 </Link>
             </NavigationMenuLink>
         </li>

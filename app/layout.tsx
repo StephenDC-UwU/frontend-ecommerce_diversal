@@ -7,8 +7,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner";
 
 
-
-
 // Title: Playfair Display
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
@@ -27,11 +25,15 @@ export const metadata: Metadata = {
   description: "E-commerce site for all your shopping needs. Project created by TheFilimisco as example.",
 };
 
-export default function RootLayout({
+import { getSession } from "@/actions/auth";
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const user = await getSession();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -44,7 +46,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          <Navbar user={user} />
           {children}
           <Toaster />
           <Footer />

@@ -1,50 +1,44 @@
 "use client"
-"use client"
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/hooks/use-cart"
 import { formatPrice } from "@/lib/formatPrice";
 import CartItem from "./components/cart-item";
-// 💡 Ya no necesitas loadStripe para esta redirección
-// import { loadStripe } from "@stripe/stripe-js"; 
-import { makePaymentRequest } from "@/api/payment";
-
-// 💡 Ya no se necesita esta promesa si solo rediriges
-// const stripePromise = loadStripe(
-//     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || ""
-// );
+import { createCheckoutSession } from "@/actions/checkout";
 
 export default function Page() {
-    const { items, removeAll } = useCart();
+    const { items, userId, removeAll } = useCart();
 
     const prices = items.map((product) => product.price);
     const totalPrice = prices.reduce((total, price) => total + price, 0);
 
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const buyStripe = async () => {
-
+        setIsLoading(true);
         try {
+            const res = await createCheckoutSession(items, userId);
 
-            const res = await makePaymentRequest.post("/api/orders", {
-                products: items,
-            });
+            if (res.error) {
+                console.error(res.error);
+                setIsLoading(false); // Stop loading on error
+                return;
+            }
 
-            // 1. Obtén la sesión completa de la respuesta
-            const { stripeSession } = res.data;
+            const { stripeSession } = res;
 
-            // 2. Comprueba que la URL exista
             if (stripeSession && stripeSession.url) {
-                // 3. Redirige el navegador a la URL de pago de Stripe
+                removeAll();
                 window.location.href = stripeSession.url;
             } else {
                 throw new Error("No se pudo obtener la URL de pago de Stripe.");
             }
 
-            // 4. (Ver nota abajo)
-            removeAll();
-
         } catch (error) {
             console.log(error);
+            setIsLoading(false);
         }
     };
 
@@ -69,8 +63,8 @@ export default function Page() {
                             <p>{formatPrice(totalPrice)}</p>
                         </div>
                         <div className="flex items-center justify-center w-full mt-3">
-                            <Button className="w-full" onClick={buyStripe}>
-                                Comprar
+                            <Button className="w-full" onClick={buyStripe} disabled={isLoading}>
+                                {isLoading ? "Cargando..." : "Comprar"}
                             </Button>
                         </div>
                     </div>

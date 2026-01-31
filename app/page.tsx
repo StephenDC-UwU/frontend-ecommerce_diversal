@@ -2,7 +2,7 @@
 import BannerDiscount from "@/components/banner-discoun";
 import BannerProduct from "@/components/banner-product";
 import CarouselTextBanner from "@/components/carousel-text-banner";
-import ChooseCategory from "@/components/choose-category";
+import ChooseGender from "@/components/choose-gender";
 import FeaturedProducts from "@/components/featured-products";
 import HeaderBanner from "@/components/header-banner";
 
@@ -14,7 +14,7 @@ export default function Home() {
       <CarouselTextBanner />
       <FeaturedProducts />
       <BannerDiscount />
-      <ChooseCategory />
+      <ChooseGender />
       <BannerProduct />
     </main>
   );

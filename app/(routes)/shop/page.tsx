@@ -1,23 +1,16 @@
 "use client"
-import { useGetProductsByCategory } from '@/api/useGetProductsByCategory';
-import { useParams } from 'next/navigation';
-import FiltersControlsCategory from './components/filters-controls-category';
+import { useGetProducts } from '@/api/useGetProducts';
+import FiltersControlsCategory from './[categorySlug]/components/filters-controls-category';
 import SkeletonSchema from '@/components/skeleton-schema';
-import ProductCard from './components/product-card';
+import ProductCard from './[categorySlug]/components/product-card';
 import { ResponseType } from '@/types/response';
 import { ProductType } from '@/types/product';
 import { useState } from 'react';
 import { Separator } from '@/components/ui/separator';
 
-
 export default function Page() {
-    const params = useParams();
-    const { categorySlug } = params;
-    const { result, isLoading }: ResponseType<ProductType> = useGetProductsByCategory(categorySlug);
+    const { result, isLoading }: ResponseType<ProductType> = useGetProducts();
     const [filterOrigin, setFilterOrigin] = useState('');
-
-    console.log(result);
-
 
     const filteredProducts = result !== null && !isLoading && (
         filterOrigin === ''
@@ -27,9 +20,7 @@ export default function Page() {
 
     return (
         <div className='max-w-6xl py-4 mx-auto sm:py-16 sm:px-24'>
-            {result !== null && !isLoading && (
-                <h1 className='text-3xl font-medium'>{result[0].sub_sub_category.sub_category.categories[0].category_name}</h1>
-            )}
+            <h1 className='text-3xl font-medium'>All Products</h1>
 
             <Separator className='my-4 bg-primary' />
 

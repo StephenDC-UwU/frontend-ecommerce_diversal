@@ -12,12 +12,12 @@ const dataFooter = [
     {
         id: 2,
         title: "Store",
-        link: "/store",
+        link: "/shop",
     },
     {
         id: 3,
         title: "Accesories",
-        link: "/accesories",
+        link: "/shop/accesories",
     },
     {
         id: 4,
