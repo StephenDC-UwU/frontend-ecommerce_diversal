@@ -27,7 +27,7 @@ const ChooseGender = () => {
                                 priority={false}
                                 alt="img_category"
                             />
-                            <p className="absolute w-full py-2 text-2xl font-bold text-center text-white bottom-5 ">{category.category_name}</p>
+                            <p className="absolute w-full py-2 text-2xl font-bold text-center text-white bottom-5 ">{category.gender_name}</p>
 
                         </Link>
                     ))

@@ -27,7 +27,7 @@ export default function Page() {
         <div className='max-w-6xl py-4 mx-auto sm:py-16 sm:px-24'>
             {result !== null && !isLoading && (
                 /*   <h1 className='text-3xl font-medium'>{result[0].sub_category.sub_category_name}</h1> */
-                <h1 className='text-3xl font-medium'>{categorySlug.toString().toUpperCase().replace(/-/g, ' ')}</h1>
+                <h1 className='text-3xl font-medium'>{categorySlug?.toString().toUpperCase().replace(/-/g, ' ')}</h1>
             )}
 
             <Separator className='my-4 bg-primary' />

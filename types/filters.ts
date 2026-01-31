@@ -8,7 +8,7 @@ export type ResultFilterTypes = {
     schema: {
         attributes: {
             origin: {
-                enum: unknown
+                enum: string[]
             }
         }
     }
