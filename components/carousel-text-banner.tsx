@@ -1,15 +1,9 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
-import { Car } from "lucide-react";
 import {
     Card,
-    CardAction,
     CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
 } from "@/components/ui/card"
 import Autoplay from 'embla-carousel-autoplay'
 

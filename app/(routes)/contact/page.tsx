@@ -1,5 +1,5 @@
 "use client"
-/* eslint-disable @next/next/no-img-element */
+
 import { ContactFormSection } from "./components/contact-form";
 import { HeaderBannerForm } from "./components/header-form";
 

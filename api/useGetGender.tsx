@@ -14,10 +14,11 @@ export function useGetGender() {
             try {
                 const response = await fetch(url);
                 const json = await response.json();
-                setResult(json.data.filter((item) => item.gender_name !== 'Unisex'));
+                setResult(json.data.filter((item: GenderType) => item.gender_name !== 'Unisex'));
                 setIsLoading(false);
-            } catch (error: any) {
-                setError(error);
+            } catch (error: unknown) {
+                const errorMessage = error instanceof Error ? error.message : "Unknown error";
+                setError(errorMessage);
                 setIsLoading(false);
             } finally {
                 setIsLoading(false);

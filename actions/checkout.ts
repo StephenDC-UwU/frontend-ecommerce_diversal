@@ -2,15 +2,16 @@
 
 import { cookies } from 'next/headers'
 import axios from 'axios'
+import { ProductType } from '@/types/product'
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:1337'
 
-export async function createCheckoutSession(products: any[], userId: number | null) {
+export async function createCheckoutSession(products: ProductType[], userId: number | null) {
     const cookieStore = await cookies()
     const jwt = cookieStore.get('jwt')?.value
 
     try {
-        const headers: any = {}
+        const headers: Record<string, string> = {}
         if (jwt) {
             headers['Authorization'] = `Bearer ${jwt}`
         }
@@ -40,7 +41,7 @@ export async function createCheckoutSession(products: any[], userId: number | nu
         })
 
         return { stripeSession: data.stripeSession }
-    } catch (error: any) {
+    } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
         console.error('Checkout error:', error.response?.data?.error || error.message)
         return { error: error.response?.data?.error?.message || 'Failed to create checkout session.' }
     }

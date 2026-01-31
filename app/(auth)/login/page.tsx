@@ -18,7 +18,7 @@ const initialState = {
 
 export default function LoginPage() {
     const router = useRouter()
-    // @ts-ignore - React 19 types might not be fully updated in all environments yet, but this is the hook
+    // @ts-expect-error React 19 types might not be fully updated in all environments yet - React 19 types might not be fully updated in all environments yet, but this is the hook
     const [state, action, isPending] = useActionState(loginAction, initialState)
 
     useEffect(() => {
@@ -75,7 +75,7 @@ export default function LoginPage() {
                 </CardContent>
                 <CardFooter className="flex flex-col space-y-2">
                     <div className="text-sm text-center text-gray-500">
-                        Don't have an account?{' '}
+                        Don&apos;t have an account?{' '}
                         <Link href="/register" className="text-primary hover:underline font-medium">
                             Sign up
                         </Link>

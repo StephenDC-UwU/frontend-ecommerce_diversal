@@ -14,8 +14,9 @@ export function useGetCategory() {
                 const json = await response.json();
                 setResult(json.data);
                 setIsLoading(false);
-            } catch (error: any) {
-                setError(error);
+            } catch (error: unknown) {
+                const errorMessage = error instanceof Error ? error.message : "Unknown error";
+                setError(errorMessage);
                 setIsLoading(false);
             } finally {
                 setIsLoading(false);

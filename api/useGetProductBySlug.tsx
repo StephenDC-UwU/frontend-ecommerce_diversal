@@ -4,7 +4,7 @@ export function useGetProductBySlug(slug: string | string[]) {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/products?filters[slug][$eq]=${slug}&populate=*`;
     const [result, setResult] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         (async () => {
@@ -13,8 +13,9 @@ export function useGetProductBySlug(slug: string | string[]) {
                 const json = await response.json();
                 setResult(json.data);
                 setIsLoading(false);
-            } catch (error: any) {
-                setError(error);
+            } catch (error: unknown) {
+                const errorMessage = error instanceof Error ? error.message : "Unknown error";
+                setError(errorMessage);
                 setIsLoading(false);
             } finally {
                 setIsLoading(false);

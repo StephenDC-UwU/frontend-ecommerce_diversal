@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/use-cart";
 import { useLovedProducts } from "@/hooks/use-loved-products";

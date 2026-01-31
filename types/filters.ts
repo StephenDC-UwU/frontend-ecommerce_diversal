@@ -5,11 +5,11 @@ export type FilterTypes = {
 }
 
 export type ResultFilterTypes = {
-    schema:{
+    schema: {
         attributes: {
             origin: {
-                enum: any
+                enum: unknown
             }
-        } 
+        }
     }
 }

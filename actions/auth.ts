@@ -6,7 +6,7 @@ import { AuthResponse, User } from '@/types/user'
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:1337'
 
-export async function loginAction(prevState: any, formData: FormData) {
+export async function loginAction(prevState: unknown, formData: FormData) {
     const identifier = formData.get('email')
     const password = formData.get('password')
 
@@ -29,7 +29,7 @@ export async function loginAction(prevState: any, formData: FormData) {
         })
 
         return { success: true, user: data.user }
-    } catch (error: any) {
+    } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
         console.error('Login error:', error.response?.data?.error || error.message)
         return {
             error: error.response?.data?.error?.message || 'Invalid credentials or server error.',
@@ -37,7 +37,7 @@ export async function loginAction(prevState: any, formData: FormData) {
     }
 }
 
-export async function registerAction(prevState: any, formData: FormData) {
+export async function registerAction(prevState: unknown, formData: FormData) {
     const username = formData.get('username')
     const email = formData.get('email')
     const password = formData.get('password')
@@ -62,7 +62,7 @@ export async function registerAction(prevState: any, formData: FormData) {
         })
 
         return { success: true, user: data.user }
-    } catch (error: any) {
+    } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
         console.error('Register error:', error.response?.data?.error || error.message)
         return {
             error: error.response?.data?.error?.message || 'Registration failed. Please try again.',
@@ -88,7 +88,7 @@ export async function getSession() {
             },
         })
         return data
-    } catch (error) {
+    } catch {
         return null
     }
 }

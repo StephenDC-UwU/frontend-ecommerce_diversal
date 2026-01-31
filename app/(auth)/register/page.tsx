@@ -18,7 +18,7 @@ const initialState = {
 
 export default function RegisterPage() {
     const router = useRouter()
-    // @ts-ignore
+    // @ts-expect-error React 19 types might not be fully updated in all environments yet
     const [state, action, isPending] = useActionState(registerAction, initialState)
 
     useEffect(() => {
