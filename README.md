@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontend Ecommerce
 
-## Getting Started
+A modern, responsive e-commerce frontend application built with the latest web technologies. This project features a sleek UI, clear navigation, and integration with essential e-commerce tools.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Modern & Responsive UI**: Built with **Next.js 15** and **Tailwind CSS 4**, ensuring a fast and visually appealing experience on all devices.
+- **Product Browsing**:
+    - **Featured Products**: Highlight specific items on the homepage.
+    - **Banners & Carousels**: Dynamic visual elements to showcase promotions (e.g., `banner-product.tsx`, `carousel-text-banner.tsx`).
+    - **Category Filtering**: Helper components like `choose-gender.tsx` suggest category-based navigation.
+- **Theming**: System-aware **Dark/Light mode** toggle using `next-themes` and `lucide-react` icons.
+- **State Management**: utilizing **Zustand** for efficient global state handling (e.g., cart management).
+- **Payment Integration**: Pre-configured with `@stripe/react-stripe-js` and `@stripe/stripe-js` for secure payment processing.
+- **Component Library**: Leverages **Radix UI** primitives (Dialog, Popover, Slot, etc.) for accessible and robust interactive components.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **UI Components**: [Radix UI](https://www.radix-ui.com/) & [Lucide React](https://lucide.dev/)
+- **HTTP Client**: [Axios](https://axios-http.com/)
+- **Carousel**: [Embla Carousel](https://www.embla-carousel.com/)
+- **Notifications**: [Sonner](https://sonner.emilkowal.ski/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Getting Started
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+Ensure you have one of the following installed:
+- Node.js (Latest LTS recommended)
+- npm, yarn, pnpm, or bun
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd frontend-ecommerce
+   ```
 
-## Deploy on Vercel
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   # or
+   bun install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Open your browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000) to see the application running.
+
+## 📜 Scripts
+
+| Script | Description |
+| :--- | :--- |
+| `npm run dev` | Starts the development server with TurboPack. |
+| `npm run build` | Builds the application for production. |
+| `npm run start` | Starts the production server. |
+| `npm run lint` | Runs ESLint to check for code quality issues. |
+
+## 📂 Project Structure
+
+- `app/`: Contains the application routes and layouts (App Router).
+- `components/`: Reusable UI components (Navbar, Footer, Banners, etc.).
+- `components/ui/`: primitive UI components, likely Shadcn UI or similar based on Radix.
+- `types/`: Type definitions (inferred).
+- `public/`: Static assets like images and icons.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
